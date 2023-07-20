@@ -1,4 +1,4 @@
-# teste_rox
+# teste-rox
 
 Este é um teste da Rox Partner que pede uma infraestrutura na nuvem para engenharia/análise de dados de uma empresa fictícia que produz bicicletas. O teste pede habilidades de Engenharia de Dados para otimizar o processo. Os seguintes itens são solicitados:
 
@@ -10,7 +10,7 @@ Este é um teste da Rox Partner que pede uma infraestrutura na nuvem para engenh
 
 Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois creio oferecer a melhor solução para a atividade promovida, além de já possuir experiência e certificação Solutions Architect na plataforma. Foram utilizadas as seguintes ferramentas da AWS:
 
-- RDS: Será utilizada uma ferramenta de RDBMS (Sistema de gerenciamento de base de dados relacionais) pois atende melhor à proposta. O banco de dados escolhido foi o MySQL 8.0.33, Single-AZ, db.t2.micro com 20GB de armazenamento General Purpose SSD (gp3) e backup automático, mantendo nossa arquitetura no free-tier. Os dados apresentados não possuem um tamanho considerável então não precisamos de uma base de dados robusta em processamento para atender a situação.
+- RDS: Será utilizada uma ferramenta de RDBMS (Sistema de gerenciamento de base de dados relacionais) pois atende melhor à proposta. O banco de dados escolhido foi o MySQL 8.0.33, Single-AZ, db.t3.micro com 20GB de armazenamento General Purpose SSD (gp3), backup automático e acesso com IP público, mantendo nossa arquitetura no free-tier. Os dados apresentados não possuem um tamanho considerável então não precisamos de uma base de dados robusta em processamento para atender a situação.
 - S3: Será criado um bucket para armazenar os [arquivos](https://github.com/leorickli/teste_rox/tree/main/arquivos_csv) fornecidos para o teste.
 - Lambda: Utilizaremos Lambda para executarmos triggers para as ações de PUT no S3.
 - Pandas: Será utilizado apenas para EDA (Análise Exploratória de Dados) básica.
@@ -35,7 +35,7 @@ De acordo com a topologia enviada juntamente com a documentação do teste, as d
    - SalesOrderHeader
    - SpecialOfferProduct
 
-Foi decidida a criação das tabelas em databases separadas Production, Sales e Person, com as respectivas colunas, chaves primárias e chaves estrangeiras conforme demonstado nos scripts SQL abaixo. Foi utilizado um script criado para contar o numero de bytes de cada coluna e auxiliar na modelagem. A criação se dará através da execução de um script pyhton que se conecta ao banco de dados e executa as querys contidas na pasta.
+Analisando os arquivos .csv, encontramos as colunas, primary e foreign keys das tabelas. Foi feito um script Python para a conexão com a base de dados MySQL dentro da RDS para podermos executar as queries abaixo. Importante notar que, para que o script Python seja executado localmente em sua máquina, é necessário atualizarmos as inbound rules do security group alocado para a instância RDS, selecionando a porta 3306 (MySQL) e inserindo o IP de sua máquina. Não é boa prática utilizar o IP "0.0.0.0/0" pois ele é muito genérico, reduzindo a segurança em sua instância. Far-se-á também necessária a criação de um IP público no momento de criação da instância.
 
 ```
 CREATE DATABASE IF NOT EXISTS Person
