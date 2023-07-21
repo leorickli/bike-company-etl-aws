@@ -37,9 +37,9 @@ De acordo com a topologia enviada juntamente com a documentação do teste, as d
 
 Analisando os arquivos .csv, encontramos as colunas, primary e foreign keys das tabelas. Foi feito um [script Python](https://github.com/leorickli/teste-rox/blob/main/criar_tabelas.py) para a conexão com a base de dados MySQL dentro da RDS para podermos executar as queries [neste repositório](https://github.com/leorickli/teste-rox/tree/main/arquivos_sql). Para um schema mais leve, foi contada a quantidade de caracteres por coluna para termos datatypes mais eficiente, reduzindo o número de bytes por coluna e aumentando a performance das queries e armazenamento. Interessante observar que a arquitetura oferecida pelo cliente mostra situações de primary key composta nas tabelas "sales.specialOrderProduct" e "sales.salesOrderDetail". Uma primary key composta permite identificar exclusivamente um registro com base na combinação de valores em várias colunas. Isso é útil quando nenhuma coluna única pode identificar exclusivamente as linhas, mas sim a combinação de várias colunas. Importante notar que, para que o script Python seja executado localmente em sua máquina, é necessário atualizarmos as inbound rules do security group alocado para a instância RDS, selecionando a porta 3306 (MySQL) e inserindo o IP de sua máquina. Não é boa prática utilizar o IP "0.0.0.0/0" pois ele é muito genérico, reduzindo a segurança em sua instância. Far-se-á também necessária a criação de um IP público no momento de criação da instância.
 
-O ERD abaixo mostra a relação entre as tabelas:
+O ERD abaixo mostra a relação entre as entidades (tabelas):
 
---- INSERIR ERD
+![image](https://github.com/leorickli/teste-rox/assets/106999054/f9c5f7f6-e51e-4213-920f-6933fee480ba)
 
 Foi feito um outro [script Python](https://github.com/leorickli/teste-rox/blob/main/upload_s3.py) para fazer o upload da layer utilizada para o trigger Lambda e dos [arquivos .csv](https://github.com/leorickli/teste-rox/tree/main/arquivos_csv) fornecidos para o teste.
 
