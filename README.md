@@ -41,3 +41,10 @@ O ERD abaixo mostra a relação entre as tabelas:
 
 --- INSERIR ERD
 
+Foi feito um outro [script Python](https://github.com/leorickli/teste-rox/blob/main/upload_s3.py) para fazer o upload da layer utilizada para o trigger Lambda e dos [arquivos .csv](https://github.com/leorickli/teste-rox/tree/main/arquivos_csv) fornecidos para o teste.
+
+Uma função Lambda é invocada através deste [script Python] cada vez que um arquivo é enviado para o bucket S3. Desta forma, toda a vez que um arquivo inserido no bucket, ele irá automaticamente alimentar a nossa base de dados no RDS.
+
+
+
+
