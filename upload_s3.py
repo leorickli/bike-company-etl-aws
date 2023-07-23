@@ -2,10 +2,10 @@ import boto3
 
 
 # Nome do bucket e suas credenciais AWS
-bucket = '134742874617-test'
-region_name = 'us-east-1'
-aws_access_key_id = 'AKIAR6X2NDH456IVT6VM'
-aws_secret_access_key = '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'
+bucket = # Bucket onde estão os arquivos .csv
+region_name = # Região do projeto
+aws_access_key_id = # Access key da sua conta AWS
+aws_secret_access_key = # Secret acess key da sua conta AWS
 
 # Conexão ao S3
 s3 = boto3.resource('s3', region_name=region_name, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
