@@ -2,10 +2,10 @@ import mysql.connector
 
 
 # Credenciais MySQL
-username = 'admin'
-password = 'soulfire'
-rds_endpoint = "testerox.cufxesze0icq.us-east-1.rds.amazonaws.com"
-port='3306'
+username = # Username da sua instância RDS
+password = # Senha da sua instância RDS
+rds_endpoint = # Endpoint da sua instância RDS
+port='3306' # Porta padrão MySQL
 
 
 # Criar a base de dados "dataRox" através do arquivo SQL
