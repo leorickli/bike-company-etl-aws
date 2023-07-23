@@ -3,7 +3,7 @@ import csv
 import mysql.connector
 s3_client = boto3.client('s3')
 
-def lambda_handler(event, context):
+def lambda_handler(event):
     # Credenciais MySQL RDS
     host = 'testerox.cufxesze0icq.us-east-1.rds.amazonaws.com'
     user = 'admin'
