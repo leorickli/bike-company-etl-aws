@@ -5,10 +5,10 @@ s3_client = boto3.client('s3')
 
 def lambda_handler(event):
     # Credenciais MySQL RDS
-    host = 'testerox.cufxesze0icq.us-east-1.rds.amazonaws.com'
-    user = 'admin'
-    password = 'soulfire'
-    database = 'testeRox'
+    host = # Endpoint da sua instância RDS
+    user = # Username da sua instância RDS
+    password = # Senha da sua instância RDS
+    database = # Nome da base de dados utilizada dentro da sua instância RDS
     
     for record in event['Records']:
         # Extract information about the S3 object
