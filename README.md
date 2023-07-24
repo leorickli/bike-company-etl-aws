@@ -17,15 +17,21 @@ Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois crei
 - Lambda: Utilizaremos Lambda para executarmos triggers para as ações de PUT no S3.
 - IAM: Será usada para darmos roles à função Lambda para que tenhamos acesso às ferramentas S3, CloudWatch e RDS.
 - CloudWatch: Será usada para verificarmos logs da nossa função Lambda, para verificar o progresso da mesma. É aqui que iremos verificar se os triggers realmente estão funcionando, após a etapa de testes dentro da própria Lambda.
-- Excel: Usado apenas para análise preliminar de dados com um pouco de EDA (Análise Exploratória de Dados).
-- Pandas: Será utilizado para data cleaning dos arquivos fornecidos no teste.
+- Excel: Usado apenas para análise preliminar de dados.
+- Pandas: Será utilizado para data cleaning e EDA (Análise Exploratória de Dados) dos arquivos fornecidos no teste.
 - Lucidchart: Usado para fazer o diagrama da arquitetura utilizada neste teste.
 - DBeaver: Usado para criar a base de dados on-premises para testes e para verificar a ingestão dos arquivos no RDS.
 - Tableau: Usado para visualização de dados.
 
-### Data Cleaning
+### Data Cleaning e EDA
 
----
+Foi criado um ambiente on-premises de testes onde os dados foram inseridos em uma database MySQL para checar se a base de dados aceitaria ou não os dados apresentados da maneira como está. Muito [data cleaning e EDA](https://github.com/leorickli/teste-rox/tree/main/cleaning_eda_notebooks) foi feito para vencer as constrições impostas pelo rígido schema da base de dados criada. Estes arquivos estão em formato .ipynb para podermos ver o progresso da exploraçao e limpeza dos dados. Alguns detalhes sobre a limpeza:
+
+- Arquivos estavam com separadores ";", foram modificados para os tradicionais separadores ","
+- Colunas com data e hora foram devidamente alocadas para o formato DATETIME
+- Textos "null" (em qualquer variação de caixa alta ou baixa) foram retirados
+- Foi constadado que há grandes linhas de texto em algumas colunas da tabela "Person", alocando a coluna para o formato LONGTEXT
+- Houveram casos de primary key com valores repetidos na tabela "SpecialOfferProduct", estas linhas foram retiradas
 
 ### Data Modeling
 
