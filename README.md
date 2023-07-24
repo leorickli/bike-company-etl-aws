@@ -12,16 +12,16 @@ Este é um teste da Rox Partner que pede uma infraestrutura na nuvem para engenh
 
 Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois creio oferecer a melhor solução para a atividade promovida, além de já possuir experiência e certificação Solutions Architect na plataforma. Foram utilizadas as seguintes ferramentas da AWS e outras:
 
-- RDS: Será utilizada uma ferramenta de RDBMS (Sistema de gerenciamento de base de dados relacionais) pois atende melhor à proposta. O banco de dados escolhido foi o MySQL 8.0.33, Single-AZ, db.t3.micro com 20GB de armazenamento General Purpose SSD (gp3), backup automático e acesso com IP público, mantendo nossa arquitetura no free-tier. Os dados apresentados não possuem um tamanho considerável então não precisamos de uma base de dados robusta em processamento para atender a situação.
-- S3: Será criado um bucket para armazenar os [arquivos limpos](https://github.com/leorickli/teste-rox/tree/main/arquivos_limpos) fornecidos para o teste.
-- Lambda: Utilizaremos Lambda para executarmos triggers para as ações de PUT no S3.
-- IAM: Será usada para darmos roles à função Lambda para que tenhamos acesso às ferramentas S3, CloudWatch e RDS.
-- CloudWatch: Será usada para verificarmos logs da nossa função Lambda, para verificar o progresso da mesma. É aqui que iremos verificar se os triggers realmente estão funcionando, após a etapa de testes dentro da própria Lambda.
-- Excel: Usado apenas para análise preliminar de dados.
-- Pandas: Será utilizado para data cleaning e EDA (Análise Exploratória de Dados) dos arquivos fornecidos no teste.
-- Lucidchart: Usado para fazer o diagrama da arquitetura utilizada neste teste.
-- DBeaver: Usado para criar a base de dados on-premises para testes e para verificar a ingestão dos arquivos no RDS.
-- Tableau: Usado para visualização de dados.
+- **RDS:** Será utilizada uma ferramenta de RDBMS (Sistema de gerenciamento de base de dados relacionais) pois atende melhor à proposta. O banco de dados escolhido foi o MySQL 8.0.33, Single-AZ, db.t3.micro com 20GB de armazenamento General Purpose SSD (gp3), backup automático e acesso com IP público, mantendo nossa arquitetura no free-tier. Os dados apresentados não possuem um tamanho considerável então não precisamos de uma base de dados robusta em processamento para atender a situação.
+- **S3:** Será criado um bucket para armazenar os [arquivos limpos](https://github.com/leorickli/teste-rox/tree/main/arquivos_limpos) fornecidos para o teste.
+- **Lambda:** Utilizaremos Lambda para executarmos triggers para as ações de PUT no S3.
+- **IAM:** Será usada para darmos roles à função Lambda para que tenhamos acesso às ferramentas S3, CloudWatch e RDS.
+- **CloudWatch:** Será usada para verificarmos logs da nossa função Lambda, para verificar o progresso da mesma. É aqui que iremos verificar se os triggers realmente estão funcionando, após a etapa de testes dentro da própria Lambda.
+- **Excel:** Usado apenas para análise preliminar de dados.
+- **Pandas:** Será utilizado para data cleaning e EDA (Análise Exploratória de Dados) dos arquivos fornecidos no teste.
+- **Lucidchart:** Usado para fazer o diagrama da arquitetura utilizada neste teste.
+- **DBeaver:** Usado para criar a base de dados on-premises para testes e para verificar a ingestão dos arquivos no RDS.
+- **Tableau:** Usado para visualização de dados.
 
 ### Data Cleaning e EDA
 
