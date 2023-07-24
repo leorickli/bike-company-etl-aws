@@ -153,8 +153,8 @@ ORDER BY total_devido;
 
 Utilizando a ferramenta AWS QuickSight e certificando-se que as devidas permissões sejam concedidas à IAM através de roles e alinhamento de VPCs, podemos utilizar a ferramenta para conectar-se ao RDS para geração de dashboards. Abaixo estão algumas visualizações.
 
-<img width="774" alt="Screenshot 2023-07-24 at 10 34 59" src="https://github.com/leorickli/teste-rox/assets/106999054/6e9b6fd9-b7fd-4e5b-b17a-acc298c09662">
-<img width="761" alt="Screenshot 2023-07-24 at 10 37 27" src="https://github.com/leorickli/teste-rox/assets/106999054/cdf07a39-e888-4518-a531-388278a8e580">
+<img width="760" alt="Screenshot 2023-07-24 at 10 45 08" src="https://github.com/leorickli/teste-rox/assets/106999054/f743d1d2-4db3-432c-98e1-d3cd3adb73a9">
+<img width="777" alt="Screenshot 2023-07-24 at 10 49 45" src="https://github.com/leorickli/teste-rox/assets/106999054/acbc55d7-964b-48f5-9611-d50bc567d3f1">
 
 ### Outras Arquiteturas
 
