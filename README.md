@@ -1,6 +1,6 @@
 # teste-rox
 
---- INSERIR DIAGRAMA DA ARQUITETURA
+<img width="1013" alt="Screenshot 2023-07-24 at 09 54 02" src="https://github.com/leorickli/teste-rox/assets/106999054/939b7226-5b37-4c87-b82f-39973cfdd023">
 
 Este é um teste da Rox Partner que pede uma infraestrutura na nuvem para engenharia/análise de dados de uma empresa fictícia que produz bicicletas. O teste pede habilidades de Engenharia de Dados para otimizar o processo. Os seguintes itens são solicitados:
 
@@ -154,7 +154,4 @@ Na concepção do projeto e no decorrer dos processos, surgiram algumas proposta
 1. No momento de testes de transferência de dados on-premisse para a base de dados MySQL na instância RDS, existe a possibilidade de transferência direta dos arquivos on-premises para a base de dados existente na nuvem. Esta medida não é viável pois a transferência dos dados é muito lenta, ela exige que exista um schema já estabelecido na base de dados e a arquitetura é pobre, inviabilizando automações e melhorias futuras.
 2. Na documentação da AWS, foi sugerido o backup da base de dados on-premises utilizando a ferramenta XtraBackup da Percona. Esta medida pode ser viável em um evento de transferência direta da base de dados on-premises para a nuvem.
 3. Após a concepção deste projeto, é possível criar um template na ferramenta CloudFormation para automatizarmos a criação do stack utilizado neste repositório.
-
-
-
-
+4. É possível que a ingestão de dados dos objetos (arquivos .csv) dentro do S3 seja feita pela ferramenta AWS Glue para realização de ETL. Posteriormente estes dados tratados são enviados para AWS Athena para análise de dados. Athena é facilmente conectada ao Tableau para visualização de dados, além do QuickSight.
