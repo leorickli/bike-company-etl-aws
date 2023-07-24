@@ -1,14 +1,15 @@
 import boto3
+import os
 import csv
 import mysql.connector
 s3_client = boto3.client('s3')
 
 def lambda_handler(event):
     # Credenciais MySQL RDS
-    host = # Endpoint da sua instância RDS
-    user = # Username da sua instância RDS
-    password = # Senha da sua instância RDS
-    database = # Nome da base de dados utilizada dentro da sua instância RDS
+    host = os.environ.get('host')
+    user = os.environ.get('user')
+    password = os.environ.get('password')
+    database = os.environ.get('database')
     
     for record in event['Records']:
         # Extract information about the S3 object
