@@ -4,11 +4,11 @@
 
 Este é um teste da Rox Partner que pede uma infraestrutura na nuvem para engenharia/análise de dados de uma empresa fictícia que produz bicicletas. O teste pede habilidades de Engenharia de Dados para otimizar o processo. Os seguintes itens são solicitados:
 
-1.	Fazer a modelagem conceitual dos dados;
-2.	Criação da infraestrutura necessária;
-3.	Criação de todos os artefatos necessários para carregar os arquivos para o banco criado;
-4.	Desenvolvimento de SCRIPT para análise de dados;
-5.	(opcional) Criar um relatório em qualquer ferramenta de visualização de dados.
+1. Fazer a modelagem conceitual dos dados;
+2. Criação da infraestrutura necessária;
+3. Criação de todos os artefatos necessários para carregar os arquivos para o banco criado;
+4. Desenvolvimento de SCRIPT para análise de dados;
+5. (opcional) Criar um relatório em qualquer ferramenta de visualização de dados.
 
 Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois creio oferecer a melhor solução para a atividade promovida, além de já possuir experiência e certificação Solutions Architect na plataforma. Foram utilizadas as seguintes ferramentas da AWS e outras:
 
@@ -60,6 +60,9 @@ Foi feito um [script Python](https://github.com/leorickli/teste-rox/blob/main/up
 Uma função Lambda é invocada através deste [script Python](https://github.com/leorickli/teste-rox/blob/main/funcao_lambda.py) cada vez que um arquivo é enviado para o bucket S3. Desta forma, toda a vez que um arquivo é inserido no bucket, ele irá automaticamente alimentar a nossa base de dados no RDS. Também se fez necessário implementar uma [layer do MySQL](https://github.com/leorickli/teste-rox/blob/main/mysql_layer.zip) com os pacotes necessários para transformar e carregar os arquivos .csv na base de dados RDS através da função Lambda. O timeout da função foi aumentado pois a primeira ETL não foi bem sucedida, ação esta recomendada para quando a função tende a processar uma grande variedade de arquivos, os três segundos que são designados de forma padrão através da plataforma normalmente não são suficientes para este tipo de transformação. É recomendado utilizar environment variables dentro da função Python para proteção de dados pessoais.
 
 <img width="595" alt="Screenshot 2023-07-24 at 09 00 17" src="https://github.com/leorickli/teste-rox/assets/106999054/445149d3-a3bf-479d-b076-3db4251855e3">
+
+Com as devidas permissões estabelecidas via IAM, é possível monitorar o processo de ETL feito pelo Lambda através dos logs do CloudWatch. Isto é ótimo para monitorar os testes iniciais e a ingestão final dos arquivos para a instância RDS após a etapa de testes.
+<img width="1143" alt="Screenshot 2023-07-24 at 09 23 30" src="https://github.com/leorickli/teste-rox/assets/106999054/9a08edcb-2ea1-4ddc-9b39-0b623e0e4e92">
 
 ### Análise de Dados
 
