@@ -17,11 +17,11 @@ Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois crei
 - **Lambda:** Utilizaremos Lambda para executarmos triggers para as ações de PUT no S3.
 - **IAM:** Será usada para darmos roles à função Lambda para que tenhamos acesso às ferramentas S3, CloudWatch e RDS.
 - **CloudWatch:** Será usada para verificarmos logs da nossa função Lambda, para verificar o progresso da mesma. É aqui que iremos verificar se os triggers realmente estão funcionando, após a etapa de testes dentro da própria Lambda.
+- **QuickSight:** Usado para visualização de dados através de conexão feita na base de dados RDS.
 - **Excel:** Usado apenas para análise preliminar de dados.
 - **Pandas:** Será utilizado para data cleaning e EDA (Análise Exploratória de Dados) dos arquivos fornecidos no teste.
 - **Lucidchart:** Usado para fazer o diagrama da arquitetura utilizada neste teste.
 - **DBeaver:** Usado para criar a base de dados on-premises para testes e para verificar a ingestão dos arquivos no RDS.
-- **Tableau:** Usado para visualização de dados.
 
 ### Data Cleaning e EDA
 
