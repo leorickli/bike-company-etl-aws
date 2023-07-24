@@ -62,6 +62,7 @@ Uma função Lambda é invocada através deste [script Python](https://github.co
 <img width="595" alt="Screenshot 2023-07-24 at 09 00 17" src="https://github.com/leorickli/teste-rox/assets/106999054/445149d3-a3bf-479d-b076-3db4251855e3">
 
 Com as devidas permissões estabelecidas via IAM, é possível monitorar o processo de ETL feito pelo Lambda através dos logs do CloudWatch. Isto é ótimo para monitorar os testes iniciais e a ingestão final dos arquivos para a instância RDS após a etapa de testes.
+
 <img width="1143" alt="Screenshot 2023-07-24 at 09 23 30" src="https://github.com/leorickli/teste-rox/assets/106999054/9a08edcb-2ea1-4ddc-9b39-0b623e0e4e92">
 
 ### Análise de Dados
@@ -78,6 +79,7 @@ FROM testeRox.SalesOrderDetail as sod
 GROUP BY SalesOrderID
 HAVING qtd >= 3
 ```
+
 <img width="214" alt="Screenshot 2023-07-24 at 08 40 46" src="https://github.com/leorickli/teste-rox/assets/106999054/3e142ee6-a033-410b-a06b-2e3b49f037a4">
 
 
@@ -98,6 +100,7 @@ FROM(
   ) as posicao
 WHERE pos <= 3
 ```
+
 <img width="528" alt="Screenshot 2023-07-24 at 08 41 12" src="https://github.com/leorickli/teste-rox/assets/106999054/83f6bd43-ed68-4469-a20f-41b0b31799b1">
 
 3. Escreva uma query ligando as tabelas Person.Person, Sales.Customer e Sales.SalesOrderHeader de forma a obter uma lista de nomes de clientes e uma contagem de pedidos efetuados.
@@ -112,6 +115,7 @@ JOIN testeRox.Person p ON c.PersonID = p.BusinessEntityID
 GROUP BY c.CustomerID, p.FirstName, p.LastName
 ORDER BY qtd DESC;
 ```
+
 <img width="346" alt="Screenshot 2023-07-24 at 08 42 24" src="https://github.com/leorickli/teste-rox/assets/106999054/e5254176-ea58-490e-93e6-a3c06151801f">
 
 4. Escreva uma query usando as tabelas Sales.SalesOrderHeader, Sales.SalesOrderDetail e Production.Product, de forma a obter a soma total de produtos (OrderQty) por ProductID e OrderDate.
@@ -128,6 +132,7 @@ JOIN testeRox.SalesOrderHeader soh ON sod.SalesOrderID = soh.SalesOrderID
 JOIN testeRox.Product p ON sod.ProductID = p.ProductID 
 ORDER BY soh.OrderDate, sod.ProductID;
 ```
+
 <img width="734" alt="Screenshot 2023-07-24 at 08 42 45" src="https://github.com/leorickli/teste-rox/assets/106999054/d57d70e9-3d1c-4053-9be9-cae22b70292d">
 
 5. Escreva uma query mostrando os campos SalesOrderID, OrderDate e TotalDue da tabela Sales.SalesOrderHeader. Obtenha apenas as linhas onde a ordem tenha sido feita durante o mês de setembro/2011 e o total devido esteja acima de 1.000. Ordene pelo total devido decrescente.
@@ -141,11 +146,15 @@ WHERE OrderDate BETWEEN '2011-09-01' AND '2011-09-30' AND TotalDue > 1000
 ORDER BY total_devido;
 ```
 *Neste caso, a query não retornou resultados pois não há dados neste intervalo de tempo.*
+
 <img width="362" alt="Screenshot 2023-07-24 at 08 44 47" src="https://github.com/leorickli/teste-rox/assets/106999054/e5ec5004-9ce2-4a83-ab5a-61d51649e492">
 
 ### Visualização de Dados
 
---- INSERIR
+Utilizando a ferramenta AWS QuickSight e certificando-se que as devidas permissões sejam concedidas à IAM através de roles e alinhamento de VPCs, podemos utilizar a ferramenta para conectar-se ao RDS para geração de dashboards. Abaixo estão algumas visualizações.
+
+<img width="774" alt="Screenshot 2023-07-24 at 10 34 59" src="https://github.com/leorickli/teste-rox/assets/106999054/6e9b6fd9-b7fd-4e5b-b17a-acc298c09662">
+<img width="761" alt="Screenshot 2023-07-24 at 10 37 27" src="https://github.com/leorickli/teste-rox/assets/106999054/cdf07a39-e888-4518-a531-388278a8e580">
 
 ### Outras Arquiteturas
 
