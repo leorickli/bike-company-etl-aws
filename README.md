@@ -20,8 +20,8 @@ Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois crei
 - **QuickSight:** Usado para visualização de dados através de conexão feita na base de dados RDS.
 - **Excel:** Usado apenas para análise preliminar de dados.
 - **Pandas:** Será utilizado para data cleaning e EDA (Análise Exploratória de Dados) dos arquivos fornecidos no teste.
+- **DBeaver:** Usado para criar a base de dados on-premises para testes, criar a ERD (Diagrama de Relação de Entidades) para Data Modeling e verificar a ingestão dos arquivos no RDS.
 - **Lucidchart:** Usado para fazer o diagrama da arquitetura utilizada neste teste.
-- **DBeaver:** Usado para criar a base de dados on-premises para testes e para verificar a ingestão dos arquivos no RDS.
 
 ### Data Cleaning e EDA
 
