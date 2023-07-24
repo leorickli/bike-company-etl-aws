@@ -27,11 +27,11 @@ Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois crei
 
 Foi criado um ambiente on-premises de testes onde os dados foram inseridos em uma database MySQL para checar se a base de dados aceitaria ou não os dados apresentados da maneira como está. Muito [data cleaning e EDA](https://github.com/leorickli/teste-rox/tree/main/cleaning_eda_notebooks) foi feito para vencer as constrições impostas pelo rígido schema da base de dados criada. Estes arquivos estão em formato .ipynb para podermos ver o progresso da exploraçao e limpeza dos dados. Alguns detalhes sobre a limpeza:
 
-- Arquivos estavam com separadores ";", foram modificados para os tradicionais separadores ","
-- Colunas com data e hora foram devidamente alocadas para o formato DATETIME
-- Textos "null" (em qualquer variação de caixa alta ou baixa) foram retirados
-- Foi constadado que há grandes linhas de texto em algumas colunas da tabela "Person", alocando a coluna para o formato LONGTEXT
-- Houveram casos de primary key com valores repetidos na tabela "SpecialOfferProduct", estas linhas foram retiradas
+- Arquivos estavam com separadores ";", foram modificados para os tradicionais separadores ",".
+- Colunas com data e hora foram devidamente alocadas para o formato DATETIME.
+- Textos "null" (em qualquer variação de caixa alta ou baixa) foram retirados.
+- Foi constadado que há grandes linhas de texto em algumas colunas da tabela "Person", alocando a coluna para o formato LONGTEXT.
+- Houveram casos de primary key com valores repetidos na tabela "SpecialOfferProduct", estas linhas foram retiradas.
 
 ### Data Modeling
 
