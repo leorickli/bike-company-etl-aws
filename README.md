@@ -31,7 +31,7 @@ Foi criado um ambiente on-premises de testes onde os dados foram inseridos em um
 - Colunas com data e hora foram devidamente alocadas para o formato DATETIME.
 - Textos "null" (em qualquer variação de caixa alta ou baixa) foram retirados.
 - Foi constadado que há grandes linhas de texto em algumas colunas da tabela "Person", alocando a coluna para o formato LONGTEXT.
-- Houveram casos de primary key com valores repetidos na tabela "SpecialOfferProduct", estas linhas foram retiradas.
+- Houveram casos de primary keys com valores repetidos na tabela "SpecialOfferProduct", estas linhas foram retiradas.
 
 ### Data Modeling
 
