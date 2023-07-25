@@ -16,7 +16,7 @@ Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois crei
 - **S3:** Será criado um bucket para armazenar os [arquivos limpos](https://github.com/leorickli/teste-rox/tree/main/arquivos_limpos) fornecidos para o teste.
 - **Lambda:** Utilizaremos Lambda para executarmos triggers para as ações de PUT no S3.
 - **IAM:** Será usada para darmos roles à função Lambda para que tenhamos acesso às ferramentas S3, CloudWatch e RDS.
-- **CloudWatch:** Será usada para verificarmos logs da nossa função Lambda, para verificar o progresso da mesma. É aqui que iremos verificar se os triggers realmente estão funcionando, após a etapa de testes dentro da própria Lambda.
+- **CloudWatch:** Será usada para verificarmos logs da nossa função Lambda, para verificar o progresso da mesma. É aqui que iremos verificar se os triggers realmente estão funcionando após a etapa de testes dentro da própria Lambda.
 - **QuickSight:** Usado para visualização de dados através de conexão feita na base de dados RDS.
 - **Excel:** Usado apenas para análise preliminar de dados.
 - **Pandas:** Será utilizado para data cleaning e EDA (Análise Exploratória de Dados) dos arquivos fornecidos no teste.
