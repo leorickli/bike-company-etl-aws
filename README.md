@@ -122,19 +122,19 @@ ORDER BY qtd DESC;
 4. Escreva uma query usando as tabelas Sales.SalesOrderHeader, Sales.SalesOrderDetail e Production.Product, de forma a obter a soma total de produtos (OrderQty) por ProductID e OrderDate.
 
 ```
-SELECT 
-    sod.ProductID AS id, 
-    p.Name AS name,
-    SUM(OrderQty) OVER(PARTITION BY sod.ProductID) AS qtd_id,
-    CAST(soh.OrderDate AS DATE) AS data_pedido,  
-    SUM(OrderQty) OVER(PARTITION BY CAST(soh.OrderDate AS DATE)) AS soma_produtos
+SELECT
+    sod.ProductID AS id,
+    p.Name AS nome,
+    SUM(sod.OrderQty) AS qtd,
+    CAST(soh.OrderDate AS DATE) AS data_pedido
 FROM testeRox.SalesOrderDetail sod
-JOIN testeRox.SalesOrderHeader soh ON sod.SalesOrderID = soh.SalesOrderID 
-JOIN testeRox.Product p ON sod.ProductID = p.ProductID 
-ORDER BY soh.OrderDate, sod.ProductID;
+JOIN testeRox.SalesOrderHeader soh ON sod.SalesOrderID = soh.SalesOrderID
+JOIN testeRox.Product p ON sod.ProductID = p.ProductID
+GROUP BY id, nome, data_pedido
+ORDER BY data_pedido, qtd DESC;
 ```
 
-<img width="734" alt="Screenshot 2023-07-24 at 08 42 45" src="https://github.com/leorickli/teste-rox/assets/106999054/d57d70e9-3d1c-4053-9be9-cae22b70292d">
+<img width="527" alt="Screenshot 2023-07-26 at 11 45 35" src="https://github.com/leorickli/teste-rox/assets/106999054/8c1fbcd1-dc85-4fc5-bf18-00e8da569364">
 
 5. Escreva uma query mostrando os campos SalesOrderID, OrderDate e TotalDue da tabela Sales.SalesOrderHeader. Obtenha apenas as linhas onde a ordem tenha sido feita durante o mês de setembro/2011 e o total devido esteja acima de 1.000. Ordene pelo total devido decrescente.
 ```
