@@ -91,8 +91,8 @@ FROM(
   SELECT 
   	ROW_NUMBER() OVER(PARTITION BY p.DaysToManufacture ORDER BY sum(sod.OrderQty) DESC) as pos,
   	p.DaysToManufacture AS dtm,
-    p.Name as nome,
-    SUM(sod.OrderQty) AS qtd
+    	p.Name as nome,
+    	SUM(sod.OrderQty) AS qtd
   FROM testeRox.SpecialOfferProduct sop 
   JOIN testeRox.Product p ON sop.ProductID = p.ProductID
   JOIN testeRox.SalesOrderDetail sod ON sop.SpecialOfferID = sod.SalesOrderDetailID
@@ -106,9 +106,10 @@ WHERE pos <= 3
 3. Escreva uma query ligando as tabelas Person.Person, Sales.Customer e Sales.SalesOrderHeader de forma a obter uma lista de nomes de clientes e uma contagem de pedidos efetuados.
 
 ```
-SELECT c.CustomerID AS id,
-       CONCAT(p.FirstName, ' ', p.LastName) AS nome, 
-       COUNT(*) AS qtd
+SELECT
+	c.CustomerID AS id,
+	CONCAT(p.FirstName, ' ', p.LastName) AS nome, 
+	COUNT(*) AS qtd
 FROM testeRox.SalesOrderHeader soh
 JOIN testeRox.Customer c ON soh.CustomerID = c.CustomerID
 JOIN testeRox.Person p ON c.PersonID = p.BusinessEntityID 
