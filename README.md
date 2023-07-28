@@ -2,7 +2,7 @@
 
 <img width="1013" alt="Screenshot 2023-07-24 at 09 54 02" src="https://github.com/leorickli/teste-rox/assets/106999054/939b7226-5b37-4c87-b82f-39973cfdd023">
 
-This is a test from Rox Partner that asks for a cloud infrastructure for engineering/data analysis from a fictitious company that makes bicycles. The test asks for Data Engineering skills to optimize the process. The following items are requested:
+This is a test from Rox Partner that asks for a cloud infrastructure for engineering/data analysis from a fictitious company that makes bicycles. There is a [brazilian portuguese](https://github.com/leorickli/rox-test/tree/main/portuguese_version) version for this test if you want to read this repository in another language. The test asks for Data Engineering skills to optimize the process. The following items are requested:
 
 1. Do conceptual modeling of the data.
 2. Creation of the necessary infrastructure.
@@ -35,7 +35,11 @@ An on-premises test environment was created where the data was ingested into a M
 
 ### Data Modeling
 
-According to the topology sent along with the test documentation, the database looks like this:
+This is the preliminarily topology that was sent along with the test:
+
+<img width="836" alt="Screenshot 2023-07-28 at 15 28 45" src="https://github.com/leorickli/rox-test/assets/106999054/b13f9b46-7103-4f9c-b7c8-ea7927b95c5c">
+
+According to the topology, the database will have these tables:
 
 - testeRox
    - Customer
