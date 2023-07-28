@@ -35,6 +35,10 @@ Foi criado um ambiente on-premises de testes onde os dados foram inseridos em um
 
 ### Data Modeling
 
+Esta é a topologia inicial enviada no teste:
+
+<img width="836" alt="Screenshot 2023-07-28 at 15 28 45" src="https://github.com/leorickli/rox-test/assets/106999054/5242b5dc-70fb-40b7-a13d-5ee866ea9c5d">
+
 De acordo com a topologia enviada juntamente com a documentação do teste, a database ficou da seguinte maneira:
 
 - testeRox
