@@ -1,43 +1,42 @@
 import boto3
 
+# AWS Bucket name and credentials
+bucket = # Enter the name of the bucket where the .csv files are stored
+region_name = # Enter the AWS region of your project
+aws_access_key_id = # Enter your AWS access key ID
+aws_secret_access_key = # Enter your AWS secret access key
 
-# Nome do bucket e suas credenciais AWS
-bucket = # Bucket onde estão os arquivos .csv
-region_name = # Região do projeto
-aws_access_key_id = # Access key da sua conta AWS
-aws_secret_access_key = # Secret acess key da sua conta AWS
-
-# Conexão ao S3
+# Connect to S3
 s3 = boto3.resource('s3', region_name=region_name, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
 print('Connected to S3')
 
-# Criação do bucket (se ele não existe)
-if s3.Bucket(bucket) in s3.buckets.all():
-   s3.meta.client.create_bucket(Bucket=bucket)
-   print(f'Bucket {bucket} criada')
+# Create the bucket (if it does not exist)
+if s3.Bucket(bucket) not in s3.buckets.all():
+    s3.meta.client.create_bucket(Bucket=bucket)
+    print(f'Bucket {bucket} created')
 else:
-   print(f'Bucket {bucket} já foi criada anteriormente')
+    print(f'Bucket {bucket} already exists')
 
-# Upload do arquivo Customer.csv
+# Upload the Customer.csv file
 s3.meta.client.upload_file('Customer.csv', bucket, 'Customer.csv')
-print('Upload com sucesso do arquivo Customer.csv')
+print('Successfully uploaded Customer.csv file')
 
-# Upload do arquivo Person.csv
+# Upload the Person.csv file
 s3.meta.client.upload_file('Person.csv', bucket, 'Person.csv')
-print('Upload com sucesso do arquivo Person.csv')
+print('Successfully uploaded Person.csv file')
 
-# Upload do arquivo Product.csv
+# Upload the Product.csv file
 s3.meta.client.upload_file('Product.csv', bucket, 'Product.csv')
-print('Upload com sucesso do arquivo Product.csv')
+print('Successfully uploaded Product.csv file')
 
-# Upload do arquivo SalesOrderDetail.csv
+# Upload the SalesOrderDetail.csv file
 s3.meta.client.upload_file('SalesOrderDetail.csv', bucket, 'SalesOrderDetail.csv')
-print('Upload com sucesso do arquivo SalesOrderDetail.csv')
+print('Successfully uploaded SalesOrderDetail.csv file')
 
-# Upload do arquivo SalesOrderHeader.csv
+# Upload the SalesOrderHeader.csv file
 s3.meta.client.upload_file('SalesOrderHeader.csv', bucket, 'SalesOrderHeader.csv')
-print('Upload com sucesso do arquivo SalesOrderHeader.csv')
+print('Successfully uploaded SalesOrderHeader.csv file')
 
-# Upload do arquivo SpecialOfferProduct.csv
+# Upload the SpecialOfferProduct.csv file
 s3.meta.client.upload_file('SpecialOfferProduct.csv', bucket, 'SpecialOfferProduct.csv')
-print('Upload com sucesso do arquivo SpecialOfferProduct.csv')
+print('Successfully uploaded SpecialOfferProduct.csv file')
