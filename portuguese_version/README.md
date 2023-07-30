@@ -13,7 +13,7 @@ Este é um teste da Rox Partner que pede uma infraestrutura na nuvem para engenh
 Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois creio oferecer a melhor solução para a atividade promovida, além de já possuir experiência e certificação Solutions Architect na plataforma. Foram utilizadas as seguintes ferramentas da AWS e outras:
 
 - **RDS:** Será utilizada uma ferramenta de RDBMS (Sistema de gerenciamento de base de dados relacionais) pois atende melhor à proposta. O banco de dados escolhido foi o MySQL 8.0.33, Single-AZ, db.t3.micro com 20GB de armazenamento General Purpose SSD (gp3), backup automático e acesso com IP público, mantendo nossa arquitetura no free-tier. Os dados apresentados não possuem um tamanho considerável então não precisamos de uma base de dados robusta em processamento para atender a situação.
-- **S3:** Será criado um bucket para armazenar os [arquivos limpos](https://github.com/leorickli/teste-rox/tree/main/arquivos_limpos) fornecidos para o teste.
+- **S3:** Será criado um bucket para armazenar os [arquivos limpos](https://github.com/leorickli/teste-rox/tree/main/portuguese_version/arquivos_limpos) fornecidos para o teste.
 - **Lambda:** Utilizaremos Lambda para executarmos triggers para as ações de PUT no S3.
 - **IAM:** Será usada para darmos roles à função Lambda para que tenhamos acesso às ferramentas S3, CloudWatch e RDS.
 - **CloudWatch:** Será usada para verificarmos logs da nossa função Lambda, para verificar o progresso da mesma. É aqui que iremos verificar se os triggers realmente estão funcionando após a etapa de testes dentro da própria Lambda.
@@ -25,7 +25,7 @@ Foi utilizada a plataforma AWS para criar a infraestrutura necessária pois crei
 
 ### Data Cleaning e EDA
 
-Foi criado um ambiente on-premises de testes onde os dados foram inseridos em uma database MySQL para checar se a base de dados aceitaria ou não os dados apresentados da maneira como está. Muito [data cleaning e EDA](https://github.com/leorickli/teste-rox/tree/main/cleaning_eda_notebooks) foi feito para vencer as constrições impostas pelo rígido schema da base de dados criada. Estes arquivos estão em formato .ipynb para podermos ver o progresso da exploraçao e limpeza dos dados. Alguns detalhes sobre a limpeza:
+Foi criado um ambiente on-premises de testes onde os dados foram inseridos em uma database MySQL para checar se a base de dados aceitaria ou não os dados apresentados da maneira como está. Muito [data cleaning e EDA](https://github.com/leorickli/teste-rox/tree/main/portuguese_version/cleaning_eda_notebooks) foi feito para vencer as constrições impostas pelo rígido schema da base de dados criada. Estes arquivos estão em formato .ipynb para podermos ver o progresso da exploraçao e limpeza dos dados. Alguns detalhes sobre a limpeza:
 
 - Arquivos estavam com separadores ";", foram modificados para os tradicionais separadores ",".
 - Colunas com data e hora foram devidamente alocadas para o formato DATETIME.
@@ -49,7 +49,7 @@ De acordo com a topologia enviada juntamente com a documentação do teste, a da
    - SalesOrderHeader
    - SpecialOfferProduct
 
-Analisando os arquivos .csv, encontramos as colunas, primary e foreign keys das tabelas. Foi feito um [script Python](https://github.com/leorickli/teste-rox/blob/main/criar_tabelas.py) para a conexão com a base de dados MySQL dentro da RDS para podermos executar as queries [nesta pasta de arquivos SQL](https://github.com/leorickli/teste-rox/tree/main/arquivos_sql). Estas queries servem para criarmos o schema dentro da base de dados MySQL. Importante notar que, para que o script Python seja executado localmente em sua máquina, é necessário atualizarmos as inbound rules do security group alocado para a instância RDS, selecionando a porta 3306 (MySQL) e inserindo o IP de sua máquina. Não é boa prática utilizar o IP "0.0.0.0/0" pois ele é muito genérico, reduzindo a segurança em sua instância. Far-se-á também necessária a criação de um IP público no momento de criação da instância.
+Analisando os arquivos .csv, encontramos as colunas, primary e foreign keys das tabelas. Foi feito um [script Python](https://github.com/leorickli/teste-rox/blob/main/portuguese_version/criar_tabelas.py) para a conexão com a base de dados MySQL dentro da RDS para podermos executar as queries nesta pasta de [arquivos SQL](https://github.com/leorickli/teste-rox/tree/main/portuguese_version/arquivos_sql). Estas queries servem para criarmos o schema dentro da base de dados MySQL. Importante notar que, para que o script Python seja executado localmente em sua máquina, é necessário atualizarmos as inbound rules do security group alocado para a instância RDS, selecionando a porta 3306 (MySQL) e inserindo o IP de sua máquina. Não é boa prática utilizar o IP "0.0.0.0/0" pois ele é muito genérico, reduzindo a segurança em sua instância. Far-se-á também necessária a criação de um IP público no momento de criação da instância.
 
 O ERD abaixo mostra a relação entre as entidades (tabelas):
 
@@ -59,9 +59,9 @@ Foi necessário uma atenção especial aos dadatypes de certas colunas, principa
 
 ### ETL
 
-Foi feito um [script Python](https://github.com/leorickli/teste-rox/blob/main/upload_s3.py) para fazer o upload dos [arquivos .csv](https://github.com/leorickli/teste-rox/tree/main/arquivos_limpos) já limpos através de Data Cleaning.
+Foi feito um [script Python](https://github.com/leorickli/teste-rox/blob/main/portuguese_version/upload_s3.py) para fazer o upload dos [arquivos .csv](https://github.com/leorickli/teste-rox/tree/main/portuguese_version/arquivos_limpos) já limpos através de Data Cleaning.
 
-Uma função Lambda é invocada através deste [script Python](https://github.com/leorickli/teste-rox/blob/main/funcao_lambda.py) cada vez que um arquivo é enviado para o bucket S3. Desta forma, toda a vez que um arquivo é inserido no bucket, ele irá automaticamente alimentar a nossa base de dados no RDS. Também se fez necessário implementar uma [layer do MySQL](https://github.com/leorickli/teste-rox/blob/main/mysql_layer.zip) com os pacotes necessários para transformar e carregar os arquivos .csv na base de dados RDS através da função Lambda. O timeout da função foi aumentado pois a primeira ETL não foi bem sucedida, ação esta recomendada para quando a função tende a processar uma grande variedade de arquivos, os três segundos que são designados de forma padrão através da plataforma normalmente não são suficientes para este tipo de transformação. É recomendado utilizar environment variables dentro da função Python para proteção de dados pessoais.
+Uma função Lambda é invocada através deste [script Python](https://github.com/leorickli/teste-rox/blob/main/portuguese_version/funcao_lambda.py) cada vez que um arquivo é enviado para o bucket S3. Desta forma, toda a vez que um arquivo é inserido no bucket, ele irá automaticamente alimentar a nossa base de dados no RDS. Também se fez necessário implementar uma [layer do MySQL](https://github.com/leorickli/teste-rox/blob/main/portuguese_version/mysql_layer.zip) com os pacotes necessários para transformar e carregar os arquivos .csv na base de dados RDS através da função Lambda. O timeout da função foi aumentado pois a primeira ETL não foi bem sucedida, ação esta recomendada para quando a função tende a processar uma grande variedade de arquivos, os três segundos que são designados de forma padrão através da plataforma normalmente não são suficientes para este tipo de transformação. É recomendado utilizar environment variables dentro da função Python para proteção de dados pessoais.
 
 <img width="595" alt="Screenshot 2023-07-24 at 09 00 17" src="https://github.com/leorickli/teste-rox/assets/106999054/445149d3-a3bf-479d-b076-3db4251855e3">
 
