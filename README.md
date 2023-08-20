@@ -10,12 +10,12 @@ This is a test from Rox Partner that asks for a cloud infrastructure for enginee
 4. SCRIPT development for data analysis.
 5. (optional) Create a report in any data visualization tool.
 
-The AWS platform was used to create the necessary infrastructure because I believe it offers the best solution for the promoted activity, in addition to alerady having the experience and the Solutions Architect certification on the platform. The following AWS tools and others were used:
+The AWS platform was used to create the necessary infrastructure because I believe it offers the best solution for the promoted activity, in addition to already having the experience and the Solutions Architect certification on the platform. The following AWS tools and others were used:
 
-- **RDS:** An RDBMS (Relational Database Management System) tool will be used as it best meets the proposal. The chosen database was MySQL 8.0.33, Single-AZ, db.t3.micro with 20GB of General Purpose SSD storage (gp3), automatic backup and access with public IP, maintaining the free-tier architecture. The data presented does not have a considerable size so we do not need a robust database in processing to meet the required situation.
+- **RDS:** An RDBMS (Relational Database Management System) tool will be used as it best meets the proposal. The chosen database was MySQL 8.0.33, Single-AZ, db.t3.micro with 20GB of General Purpose SSD storage (gp3), automatic backup, and access with public IP, maintaining the free-tier architecture. The data presented does not have a considerable size so we do not need a robust database in processing to meet the required situation.
 - **S3:** It will be created a bucket for the [cleaned files](https://github.com/leorickli/rox-test/tree/main/cleaned_files) that were created based on the raw files provided.
 - **Lambda:** We will use Lambda to execute triggers for the PUT commands in S3.
-- **IAM:** It will be used to give roles to the Lambda function so that we have access to the S3, CloudWatch and RDS tools.
+- **IAM:** It will be used to give roles to the Lambda function so that we have access to the S3, CloudWatch, and RDS tools.
 - **CloudWatch:** It will be used to check our Lambda function's logs, to check its progress. It is here that we will verify if the triggers are really working after the testing phase inside the Lambda itself.
 - **QuickSight:** Used for viewing data through a connection made to the RDS database.
 - **Excel:** Used for preliminary data analysis only.
@@ -35,7 +35,7 @@ An on-premises test environment was created where the data was ingested into a M
 
 ### Data Modeling
 
-This is the preliminarily topology that was sent along with the test:
+This is the preliminary topology that was sent along with the test:
 
 <img width="836" alt="Screenshot 2023-07-28 at 15 28 45" src="https://github.com/leorickli/rox-test/assets/106999054/b13f9b46-7103-4f9c-b7c8-ea7927b95c5c">
 
@@ -61,7 +61,7 @@ Special attention was needed to the dadatypes of certain columns, especially in 
 
 A [Python script](https://github.com/leorickli/teste-rox/blob/main/upload_s3.py) was made to upload the [.csv files](https://github.com/leorickli/teste-rox/tree/main/arquivos_limpos) already cleaned through Data Cleaning.
 
-A Lambda funcion is called through this [Python script](https://github.com/leorickli/rox-test/blob/main/lambda_function.py) each time a file is uploaded to the S3 bucket. This way, every time a file is inserted into the bucket, it will automatically be fed into our RDS database. It was also necessary to implement a [MySQL layer](https://github.com/leorickli/rox-test/blob/main/mysql_layer.zip) with the necessary packages to transform and load the .csv files into the RDS database through the Lambda function. The function timeout was increased because the first ETL was not successful, this action is recommended for when the function tends to process a large quantity of files, the three seconds that are designated by default across the platform are usually not enough for this type of transformation. It is recommended to use environment variables inside the Python function to protect personal data.
+A Lambda function is called through this [Python script](https://github.com/leorickli/rox-test/blob/main/lambda_function.py) each time a file is uploaded to the S3 bucket. This way, every time a file is inserted into the bucket, it will automatically be fed into our RDS database. It was also necessary to implement a [MySQL layer](https://github.com/leorickli/rox-test/blob/main/mysql_layer.zip) with the necessary packages to transform and load the .csv files into the RDS database through the Lambda function. The function timeout was increased because the first ETL was not successful, this action is recommended for when the function tends to process a large number of files, the three seconds that are designated by default across the platform are usually not enough for this type of transformation. Using environment variables inside the Python function to protect personal data is recommended.
 
 <img width="595" alt="Screenshot 2023-07-24 at 09 00 17" src="https://github.com/leorickli/teste-rox/assets/106999054/445149d3-a3bf-479d-b076-3db4251855e3">
 
@@ -123,7 +123,7 @@ ORDER BY qtd DESC;
 
 <img width="346" alt="Screenshot 2023-07-24 at 08 42 24" src="https://github.com/leorickli/teste-rox/assets/106999054/e5254176-ea58-490e-93e6-a3c06151801f">
 
-4. Write a query using the tables Sales.SalesOrderHeader, Sales.SalesOrderDetail and Production.Product, in order to obtain the total sum of products (OrderQty) by ProductID and OrderDate.
+4. Write a query using the tables Sales.SalesOrderHeader, Sales.SalesOrderDetail and Production.Product, to obtain the total sum of products (OrderQty) by ProductID and OrderDate.
 
 ```
 SELECT
@@ -140,7 +140,7 @@ ORDER BY data_pedido, qtd DESC;
 
 <img width="527" alt="Screenshot 2023-07-26 at 11 45 35" src="https://github.com/leorickli/teste-rox/assets/106999054/8c1fbcd1-dc85-4fc5-bf18-00e8da569364">
 
-5. Write a query showing the SalesOrderID, OrderDate, and TotalDue fields from the Sales.SalesOrderHeader table. Get only the lines where the order was placed during the month of september/2011 and the total due is above 1,000. Sort by descending total due.
+5. Write a query showing the SalesOrderID, OrderDate, and TotalDue fields from the Sales.SalesOrderHeader table. Get only the lines where the order was placed during September/2011 and the total due is above 1,000. Sort by descending total due.
 ```
 SELECT 
 	SalesOrderID as id,
@@ -150,7 +150,7 @@ FROM testeRox.SalesOrderHeader
 WHERE OrderDate BETWEEN '2011-09-01' AND '2011-09-30' AND TotalDue > 1000
 ORDER BY total_devido;
 ```
-*In this case, the query did not return any values because there is no data in this the proposed interval.*
+*In this case, the query did not return any values because there is no data in this proposed interval.*
 
 <img width="362" alt="Screenshot 2023-07-24 at 08 44 47" src="https://github.com/leorickli/teste-rox/assets/106999054/e5ec5004-9ce2-4a83-ab5a-61d51649e492">
 
@@ -165,7 +165,7 @@ Using AWS QuickSight and making sure that the proper permissions are granted to 
 
 In the conception of the project and in the course of the processes, some proposals for different approaches and architectures emerged that could be discussed and/or perhaps addressed in the future. Below are some of these approaches:
 
-1. When testing the on-premises data transfer to the MySQL database in the RDS instance, there is the possibility of directly transferring the on-premises files to the existing database in the cloud. This measure is not viable because the data transfer is very slow, it requires a schema to already be established in the database and the architecture is poor, making future automations and improvements unfeasible.
-2. In the AWS documentation, it was suggested to backup the on-premises database using Percona's XtraBackup tool. This measure may be feasible in the event of a direct transfer from the on-premises database to the cloud.
+1. When testing the on-premises data transfer to the MySQL database in the RDS instance, there is the possibility of directly transferring the on-premises files to the existing database in the cloud. This measure is not viable because the data transfer is very slow, it requires a schema to already be established in the database and the architecture is poor, making future automation and improvements unfeasible.
+2. In the AWS documentation, it was suggested to back up the on-premises database using Percona's XtraBackup tool. This measure may be feasible in the event of a direct transfer from the on-premises database to the cloud.
 3. After designing this project, it is possible to create a template in the CloudFormation tool to automate the creation of the stack used in this repository.
 4. It is possible that the data ingestion of objects (.csv files) within S3 is done by the AWS Glue tool for performing ETL. Subsequently, this processed data is sent to AWS Athena for data analysis. Athena is easily connected to Tableau for data visualization in addition to QuickSight.
