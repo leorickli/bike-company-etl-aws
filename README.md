@@ -10,7 +10,7 @@ This is a test from Rox Partner that asks for a cloud infrastructure for enginee
 4. SCRIPT development for data analysis.
 5. (optional) Create a report in any data visualization tool.
 
-The AWS platform was used to create the necessary infrastructure because I believe it offers the best solution for the promoted activity, in addition to already having the experience and the Solutions Architect certification on the platform. The following AWS tools and others were used:
+The AWS platform was used to create the necessary infrastructure because I believe it offers the best solution for the promoted activity. In addition, I do already have experience and the Solutions Architect certification on the platform. The following AWS tools and others were used:
 
 - **RDS:** An RDBMS (Relational Database Management System) tool will be used as it best meets the proposal. The chosen database was MySQL 8.0.33, Single-AZ, db.t3.micro with 20GB of General Purpose SSD storage (gp3), automatic backup, and access with public IP, maintaining the free-tier architecture. The data presented does not have a considerable size so we do not need a robust database in processing to meet the required situation.
 - **S3:** It will be created a bucket for the [cleaned files](https://github.com/leorickli/rox-test/tree/main/cleaned_files) that were created based on the raw files provided.
