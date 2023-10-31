@@ -55,7 +55,7 @@ The ERD below shows the relationship between the entities (tables):
 
 <img width="892" alt="Screenshot 2023-07-22 at 10 04 32" src="https://github.com/leorickli/teste-rox/assets/106999054/67ffc189-f23e-414f-b8d1-8766214e370c">
 
-Special attention was needed to the dadatypes of certain columns, especially in the columns with dates. A special case is in the Person table, where we find the columns "AdditionalContactInfo" and "Demographics". The LONGTEXT datatype was necessary because there are long lines of text in xml format.
+Special attention was needed to the datatypes of certain columns, especially in the columns with dates. A special case is in the Person table, where we find the columns "AdditionalContactInfo" and "Demographics". The LONGTEXT datatype was necessary because there are long lines of text in xml format.
 
 ### ETL
 
