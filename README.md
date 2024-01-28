@@ -23,7 +23,7 @@ The AWS platform was used to create the necessary infrastructure because I belie
 - **DBeaver:** Used to create the on-premises database for testing, create the ERD (Entity Relationship Diagram) for Data Modeling and verify the ingestion of files in RDS.
 - **Lucidchart:** Used for the architecture diagram provided in this test.
 
-### Data Cleaning e EDA
+### Data Cleaning and EDA
 
 An on-premises test environment was created where the data was ingested into a MySQL database to check whether it would accept the data presented in its raw format. A lot of [data cleaning and EDA](https://github.com/leorickli/rox-test/tree/main/cleaning_eda_notebooks) was made to overcome the constraints imposed by the rigid schema of the database created. These files are in .ipynb format so we can see the progress of exploration and data cleaning. Some details about cleaning:
 
