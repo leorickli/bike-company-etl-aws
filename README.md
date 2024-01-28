@@ -35,11 +35,11 @@ An on-premises test environment was created where the data was ingested into a M
 
 ### Data Modeling
 
-This is the preliminary topology that was sent along with the test:
+This is the preliminary diagram that was sent along with the test:
 
 <img width="836" alt="Screenshot 2023-07-28 at 15 28 45" src="https://github.com/leorickli/rox-test/assets/106999054/b13f9b46-7103-4f9c-b7c8-ea7927b95c5c">
 
-According to the topology, the database will have these tables:
+According to the diagram, the database will have these tables:
 
 - testeRox
    - Customer
