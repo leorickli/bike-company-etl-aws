@@ -59,7 +59,7 @@ Special attention was needed to the datatypes of certain columns, especially in 
 
 ### ETL
 
-A [Python script](https://github.com/leorickli/teste-rox/blob/main/upload_s3.py) was made to upload the [.csv files](https://github.com/leorickli/teste-rox/tree/main/arquivos_limpos) already cleaned through Data Cleaning.
+A [Python script](https://github.com/leorickli/teste-rox/blob/main/upload_s3.py) was made to upload the [.csv files](https://github.com/leorickli/rox-test/tree/main/cleaned_files) already cleaned through Data Cleaning.
 
 A Lambda function is called through this [Python script](https://github.com/leorickli/rox-test/blob/main/lambda_function.py) each time a file is uploaded to the S3 bucket. This way, every time a file is inserted into the bucket, it will automatically be fed into our RDS database. It was also necessary to implement a [MySQL layer](https://github.com/leorickli/rox-test/blob/main/mysql_layer.zip) with the necessary packages to transform and load the .csv files into the RDS database through the Lambda function. The function timeout was increased because the first ETL was not successful, this action is recommended for when the function tends to process a large number of files, the three seconds that are designated by default across the platform are usually not enough for this type of transformation. Using environment variables inside the Python function to protect personal data is recommended.
 
