@@ -1,8 +1,8 @@
-# rox-test
+# bike-company-etl-aws
 
 <img width="1013" alt="Screenshot 2023-07-24 at 09 54 02" src="https://github.com/leorickli/teste-rox/assets/106999054/939b7226-5b37-4c87-b82f-39973cfdd023">
 
-This is a test from Rox Partner that asks for a cloud infrastructure for engineering/data analysis from a fictitious company that makes bicycles. There is a [brazilian portuguese](https://github.com/leorickli/rox-test/tree/main/portuguese_version) version for this test if you want to read this repository in another language. The test asks for Data Engineering skills to optimize the process. The following items are requested:
+This is a test that uses AWS cloud infrastructure to create a data engineering pipeline and analysis for a company that makes bicycles. There is a [brazilian portuguese](https://github.com/leorickli/rox-test/tree/main/portuguese_version) version for this test if you want to read this repository in another language. The test asks for Data Engineering skills to optimize the process. The following items are requested:
 
 1. Do conceptual modeling of the data.
 2. Creation of the necessary infrastructure.
